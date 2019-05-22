@@ -1,7 +1,8 @@
 # MSX Basic Sublime Text 3 highlight  
 
-A set of configurations made to help improve the experience of [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified); yet another tool that allows to code MSX Basic with modern standards and convert it back to the classic format.  
-An effort, however, has made to make its compatible with the classic MSX Basic syntax.  
+A set of configurations made to help improve the experience of [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified).  
+MSX Basic Dignified is yet another tool that allows to code MSX Basic with modern standards and convert it back to the classic format.  
+The syntax highlight is compatible with the classic MSX Basic.  
 
 There are three components:  
 - A `tmPreferences` to add `'` (REM) to the comment shortcut key.  
