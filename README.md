@@ -1,18 +1,18 @@
 # MSX Basic Sublime Text 3 highlight  
 
-A set of configurations made to help improve the experience of [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified).  
+A syntax highlight compatible with MSX Basic made originally to help improve the experience of [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified).  
 MSX Basic Dignified is yet another tool that allows to code MSX Basic with modern standards and convert it back to the classic format.  
-The syntax highlight is compatible with the classic MSX Basic.  
+ 
 
 There are three components:  
 - A `tmPreferences` to add `'` (REM) to the comment shortcut key.  
 - A `tmTheme` a theme based on Monkai with special scopes for **MBD**.  
 - A pretty complete MSX Basic `sublime-syntax` with special highlights for **MBD**.  
 
-*Overview:*  
+### *Overview:*  
 ![# Syntax-Overview](https://github.com/farique1/MSX-Sublime-Syntax/blob/master/Images/Syntax-Overview.jpg)  
 
-### *Features*  
+### *Some Features*  
 - General:  
   - All the basic stuff: functions, instructions, variables, quotes, numbers, operators, etc.  
   - Hexadecimal and Binary notation.  
