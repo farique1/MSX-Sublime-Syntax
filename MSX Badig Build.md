@@ -17,7 +17,7 @@ Once installed, just choose *MSX Badig* built system from the *Build* menu on Su
 - `MSX Badig Build.ini`  
 
 `MSX Badig.sublime-build` and `MSX Badig Build.py` must go into an `MSX` subfolder inside the Sublime `packages` folder: *Sublime Text -> Preferences -> Browse Packages...* on a Mac.  
-`MSX Badig Build.ini` must be on the same folder of the code being edited.    
+`MSX Badig Build.ini` must be on the same folder as the code being edited.    
 
 ## Configuration  
 
@@ -37,17 +37,17 @@ classic_basic = False
 The first three lines tell **MBB** where are the installations and executables of **openMSX**, **MSX Basic Dignified** and the required disk drive enabled **save state**.   
 
 `export_path` is the folder where the built file will be placed. This folder will be inserted as a disk on **openMSX**.  
-`export_file`is the name of the built file. It will be loaded with `RUN"` on **openMSX** and should have 8 characters.  
+`export_file` is the name of the built file. It will be loaded with `RUN"` on **openMSX** and should have 8 characters.  
 
-By default **MBB** run on throttle on **openMSX** to speed up the loading. You can disable it with `False` on `throttle`.  
+By default **MBB** will turn on *throttle* on **openMSX** to speed up the loading. You can disable it with `False` on `throttle`.  
 
-And finally set `classic_basic` to `True` if you want to build a classic, standard, MSX Basic file. **MBB** will ignore the export settings and open the file being worked on **openMSX**. Remember, It will mount its folder as a disk and you need `MSX Badig Build.ini` there.  
+And finally set `classic_basic` to `True` if you want to build a classic, standard, MSX Basic file. **MBB** will ignore the export settings and open the file being worked on **openMSX**. Remember, It will mount its folder as a disk and load its file name from the MSX. Also you need `MSX Badig Build.ini` there.  
 
 ## Execution  
 
 Make sure *MSX Badig* is chosen on *Tools -> Build System* and that the `.ini` file is properly setup.  
-Then, once you press Command+B, **MBB** will convert the source (with **MSX Basic Dignified**, if it is the case), open **openMSX**, insert the destination folder as a disk, toggle throttle (if chosen) and `RUN"` the destination file.  
-Appart from the file names, **MSX Basic Dignified** will run with the settings enabled on its own `.ini` file.  
+Then, once you press Command+B, **MBB** will convert the source (with **MSX Basic Dignified**, if it is the case), open **openMSX** with the save state, insert the destination folder as a disk, toggle throttle (if chosen) and `RUN"` the destination file.  
+**MSX Basic Dignified** will run with the settings enabled on its own `.ini` file.  
 To exit the test session just close **openMSX**.  
 
 
