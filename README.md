@@ -1,4 +1,4 @@
-# MSX Basic Sublime Text 3 Tools
+# MSX Basic Tools for Sublime Text 3
 
 A syntax highlight compatible with MSX Basic made originally to help improve the experience of [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified).  
 Also a [build system](https://github.com/farique1/MSX-Sublime-Syntax/blob/master/MSX%20Badig%20Build.md) using openMSX.
