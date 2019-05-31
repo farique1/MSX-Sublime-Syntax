@@ -8,7 +8,7 @@ There are three components:
 - A `tmPreferences` to add `'` (REM) to the comment shortcut key.  
 - A `tmTheme` based on Monkai with special scopes for **MBD**.  
 - A pretty complete MSX Basic `sublime-syntax` with special highlights for **MBD**.  
-- A build system to send MSX Basic source (Dignified) or tradicional code straight from Sublime to openMSX.  
+- A [build system](https://github.com/farique1/MSX-Sublime-Syntax/blob/master/MSX%20Badig%20Build.md) to run [MSX Basic Dignified](https://github.com/farique1/msx-basic-dignified) source or tradicional MSX Basic code on **openMSX** straight from Sublime Text 3.  
 
 ### *Overview:*  
 ![# Syntax-Overview](https://github.com/farique1/MSX-Sublime-Syntax/blob/master/Images/Syntax-Overview.jpg)  
