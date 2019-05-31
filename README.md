@@ -6,7 +6,7 @@ Also a [build system](https://github.com/farique1/MSX-Sublime-Syntax/blob/master
 >MSX Basic Dignified is yet another tool that allows to code MSX Basic with modern standards and convert it back to the classic format.  
  
 
-There are three components:  
+There are four components:  
 - A `tmPreferences` to add `'` (REM) to the comment shortcut key.  
 - A `tmTheme` based on Monkai with special scopes for **MBD**.  
 - A pretty complete MSX Basic `sublime-syntax` with special highlights for **MBD**.  
