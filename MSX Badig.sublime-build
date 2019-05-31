@@ -1,0 +1,4 @@
+{
+    "cmd": ["python", "$packages/MSX/MSX Badig Build.py", "$file_path", "$file_name"],
+    "selector": "source.msxbasic",
+}
