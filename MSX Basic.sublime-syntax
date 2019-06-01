@@ -25,14 +25,13 @@ contexts:
     - match: '{{.+?}}'
       scope: invalid.msxbasic
 
-    # Label invalid character (do not catch if more than one interspersed)
-    # - match: '{(?:[\w]*[\W]){1,2}[\w^}]*}'
-    - match: '{\w*[^@][\W]+\w*}'
-      scope: invalid.msxbasic
-
-    # Labels (make not catch empty nor non-word characters)
+    # Labels with valid chacateres
     - match: '{(\w+?|@)}'
       scope: entity.name.class.line.msxbasic
+
+    # Labels with everithing else
+    - match: '{.+?}'
+      scope: invalid.msxbasic
 
     # Round brackets balancing warning (only highlights missing closed)
     - match: \(
@@ -40,18 +39,26 @@ contexts:
     - match: \)
       scope: invalid.msxbasic
  
-    # Define brackets
-    - match: '\['
-      push: define_bracket
-
     # Define lines
     - match: (?i:^\s*define)
       scope: variable.parameter.msxbasic
 
+    # Define [?@] - print at
+    - match: '\[\?@\]'
+      scope: keyword.control.msxbasic
+
+    # Define brackets
+    - match: '\[.+?\]'
+      scope: variable.parameter.msxbasic
+
+    # Special cases for on xxx goto/gosub (there are more?)
+    - match: '(?i:error|interval|key|sprite|stop|strig)\s*(?=(?i:goto|gosub))'
+      scope: support.function.msxbasic
+
     # Instructions (several are position and context sensitive)
     # review: base key play strig stick pdl pad time date set...
     # catching 'key' if after ^ or : unless folowed by (
-    - match: (?i:\_(\w+)|\?|auto|beep|bload|bsave|(call)(\sadjust|\spause|\spcmplay|\spcmrec|\b)|circle|clear|cload|close|cls|cmd|color|cont|copy|copy|csave|csrlin|data|(def)(dbl|(?=\s?fn)|int|sng|str|\s?usr)|delete|dim|draw|dsko\$|else|end|endif|erase|error|field|files|for|get|gosub|goto|if|input|interval|ipl|kanji|(?<=:|^)\s*key(?!\()|kill|let|line|list|llist|load|locate|lprint|lset|maxfiles|merge|motor|name|new|next|open|out|paint|play(?!(\()| +\()|point|poke|preset|print|pset|put|read|renum|restore|resume|return|rset|run|run|save|screen|(set)(\sadjust|\sbeep|\spage|\spassword|\sprompt|\sscreen|\sscroll|\stitle|\svideo|\b)|sound|sprite\$|sprite|step|stop|swap|then|to|troff|tron|using|vpoke|wait|width|off|on)
+    - match: (?i:\_(\w+)|\?|as(?=\s*#|\s*\w+\$)|auto|beep|bload|bsave|(call)(\sadjust|\spause|\spcmplay|\spcmrec|\b)|circle|clear|cload|close|cls|cmd|color|cont|copy|copy|csave|csrlin|data|(def)(dbl|(?=\s?fn)|int|sng|str|\s?usr)|delete|dim|draw|dsko\$|else|end|endif|erase|error|field|files|for|get|gosub|goto|if|input|interval|ipl|kanji|(?<=:|^)\s*key(?!\()|kill|let|line|list|llist|load|locate|lprint|lset|maxfiles|merge|motor|name|new|next|off|on|open|out|paint|play(?!(\()| +\()|point|poke|preset|print|pset|put|read|renum|restore|resume|return|rset|run|run|save|screen|(set)(\sadjust|\sbeep|\spage|\spassword|\sprompt|\sscreen|\sscroll|\stitle|\svideo|\b)|sound|sprite\$|sprite|step|stop|swap|then|to|troff|tron|using|vpoke|wait|width)
       scope: keyword.control.msxbasic
       
     # Functions (several are position and context sensitive)
@@ -84,8 +91,10 @@ contexts:
       scope: constant.global.msxbasic
 
     # Hex and binary numbers (bug if word after hex touching and beggining with a-f)
-    - match: '&[hH]([0-9a-fA-F]+|)|&[bB]([01]+|)'
-      scope: constant.numeric.msxbasic
+    - match: '(&[hH])([0-9a-fA-F]+|)|(&[bB])([01]+|)'
+      captures:
+        2: constant.numeric.msxbasic
+        4: constant.numeric.msxbasic
 
     # Quotes: show join line character _
   double_quoted_string:
@@ -118,12 +127,6 @@ contexts:
       scope: comment.msxbasic
     - match: '((?<!_)$\n|:)'
       scope: comment.msxbasic
-      pop: true
-
-    # Defines
-  define_bracket:
-    - meta_scope: variable.parameter.msxbasic
-    - match: '($|\])'
       pop: true
 
     # Round brackets
