@@ -41,7 +41,7 @@ The first three lines tell **MBB** where are the installations and executables o
 
 By default **MBB** will turn on *throttle* on **openMSX** to speed up the loading. You can disable it with `False` on `throttle`.  
 
-And finally set `classic_basic` to `True` if you want to build a classic, standard, MSX Basic file. **MBB** will ignore the export settings and open the file being worked on **openMSX**. Remember, It will mount its folder as a disk and load its file name from the MSX. Also you need `MSX Badig Build.ini` there.  
+And finally, set `classic_basic` to `True` if you want to build a classic, standard, MSX Basic file. **MBB** will ignore the export settings and send the file being worked on Sublime to **openMSX** without conversion. Remember, It will mount the folder as a disk and load the file on the MSX so mind the name size. Also you need `MSX Badig Build.ini` there.  
 
 ## Execution  
 
