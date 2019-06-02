@@ -7,7 +7,7 @@ A build system to run [MSX Basic Dignified](https://github.com/farique1/msx-basi
 
 Once installed, just choose *MSX Badig* built system from the *Build* menu on Sublime and Command+B at will.  
 
->**MBB** only works on Mac OS for now.  
+>**MBB** only work on Mac OS for now.  
 
 ## Setup  
 
