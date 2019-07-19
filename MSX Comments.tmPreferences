@@ -5,7 +5,7 @@
 	<key>name</key>
     <string>Comments</string>
 	<key>scope</key>
-	<string>source.msxbasic</string>
+	<string>source.msxbasicdignified</string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>
@@ -14,7 +14,7 @@
 				<key>name</key>
 				<string>TM_COMMENT_START</string>
 				<key>value</key>
-				<string>' </string>
+				<string>## </string>
 			</dict>
 		</array>
 	</dict>

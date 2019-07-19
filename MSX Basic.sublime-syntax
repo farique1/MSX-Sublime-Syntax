@@ -13,7 +13,7 @@ contexts:
       push: double_quoted_string
 
     # Comment line ' ## REM
-    - match: (?i:'|##|rem)
+    - match: (?i:'|rem)
       push: comment_line
 
     # DATA line highlights elements and comma only
@@ -21,35 +21,11 @@ contexts:
       push: data_line
       scope: keyword.control.msxbasic
 
-    # Label not found
-    - match: '{{.+?}}'
-      scope: invalid.msxbasic
-
-    # Labels with valid chacateres
-    - match: '{(\w+?|@)}'
-      scope: entity.name.class.line.msxbasic
-
-    # Labels with everithing else
-    - match: '{.+?}'
-      scope: invalid.msxbasic
-
     # Round brackets balancing warning (only highlights missing closed)
     - match: \(
       push: brackets
     - match: \)
       scope: invalid.msxbasic
- 
-    # Define lines
-    - match: (?i:^\s*define)
-      scope: variable.parameter.msxbasic
-
-    # Define [?@] - print at
-    - match: '\[\?@\]'
-      scope: keyword.control.msxbasic
-
-    # Define brackets
-    - match: '\[.+?\]'
-      scope: variable.parameter.msxbasic
 
     # Special cases for on xxx goto/gosub (there are more?)
     - match: '(?i:error|interval|key|sprite|stop|strig)\s*(?=(?i:goto|gosub))'
@@ -58,9 +34,9 @@ contexts:
     # Instructions (several are position and context sensitive)
     # review: base key play strig stick pdl pad time date set...
     # catching 'key' if after ^ or : unless folowed by (
-    - match: (?i:\_(\w+)|\?|as(?=\s*#|\s*\w+\$)|auto|beep|bload|bsave|(call)(\sadjust|\spause|\spcmplay|\spcmrec|\b)|circle|clear|cload|close|cls|cmd|color|cont|copy|copy|csave|csrlin|data|(def)(dbl|(?=\s?fn)|int|sng|str|\s?usr)|delete|dim|draw|dsko\$|else|end|endif|erase|error|field|files|for|get|gosub|goto|if|input|interval|ipl|kanji|(?<=:|^)\s*key(?!\()|kill|let|line|list|llist|load|locate|lprint|lset|maxfiles|merge|motor|name|new|next|off|on|open|out|paint|play(?!(\()| +\()|point|poke|preset|print|pset|put|read|renum|restore|resume|return|rset|run|run|save|screen|(set)(\sadjust|\sbeep|\spage|\spassword|\sprompt|\sscreen|\sscroll|\stitle|\svideo|\b)|sound|sprite\$|sprite|step|stop|swap|then|to|troff|tron|using|vpoke|wait|width)
-      scope: keyword.control.msxbasic
-      
+    - match: (?i:\_(\w+)|\?|as(?=\s*#|\s*\w+\$)|auto|beep|bload|bsave|(call)(\sadjust|\spause|\spcmplay|\spcmrec|\b)|circle|clear|cload|close|cls|cmd|color|cont|copy|copy|csave|csrlin|data|(def)(dbl|(?=\s?fn)|int|sng|str|\s?usr)|delete|dim|draw|dsko\$|else|end|erase|error|field|files|for|get|gosub|goto|if|input|interval|ipl|kanji|(?<=:|^)\s*key(?!\()|kill|let|line|list|llist|load|locate|lprint|lset|maxfiles|merge|motor|name|new|next|off|on|open|out|paint|play(?!(\()| +\()|point|poke|preset|print|pset|put|read|renum|restore|resume|return|rset|run|run|save|screen|(set)(\sadjust|\sbeep|\spage|\spassword|\sprompt|\sscreen|\sscroll|\stitle|\svideo|\b)|sound|sprite\$|sprite|step|stop|swap|then|to|troff|tron|using|vpoke|wait|width)
+      scope: keyword.control.msxbasiccomment.msxbasic
+
     # Functions (several are position and context sensitive)
     # review: base key play strig stick pdl pad time date set...
     - match: (?i:abs|asc|atn|attr\$|base|bin\$|cdbl|cdbl|chr\$|cint|cint|cos|csng|csng|cvd|cvi|cvs|date|dskf|eof|erl|err|exp|fix|fn|fpos|fre|hex\$|inkey\$|inp|input\$|instr|int|key|left\$|len|loc|lof|log|lpos|mid\$|mkd\$|mki\$|mks\$|oct\$|pad|pdl|peek|play(?=(\(|\s+\())|pos|right\$|rnd|sgn|sin|space\$|spc|sqr|stick|str\$|strig|string\$|tab|tan|time|usr|val|varptr|varptr|vdp|vpeek)
@@ -70,12 +46,8 @@ contexts:
     - match: ':'
       scope: comment.msxbasic
 
-    # Line join character _
-    - match: '_(\s+($|(?=##)))'
-      scope: variable.parameter.msxbasic
-
     # Separators
-    - match: '[,;]'
+    - match: '[.,;]'
       scope: keyword.operator.msxbasic
 
     # Operators
@@ -83,7 +55,7 @@ contexts:
       scope: keyword.operator.msxbasic
 
     # Numbers
-    - match: (\d(\.\d)?)+
+    - match: ([1-9]+[0-9]*|0)
       scope: constant.numeric.msxbasic
 
     # Variables
@@ -99,20 +71,18 @@ contexts:
     # Quotes: show join line character _
   double_quoted_string:
     - meta_scope: string.quoted.double.msxbasic
-    - match: '_(\s+$)'
-      scope: variable.parameter.msxbasic
-    - match: '"'
+    - match: '"|$'
       pop: true
 
     # Comments: include labels and continues next line if ending wit : or _
     # (does not continue if next line begins with numbers)
   comment_line:
     - meta_scope: comment.msxbasic
-    - match: '{{.*?}}'
-      scope: invalid.msxbasic
+    - match: '{\d+?}'
+      scope: comment.msxbasic
     - match: '{(\w+?|@)}'
       scope: entity.name.class.line.msxbasic
-    - match: '(?<!:)(?<!_)$\n|^\s*(?=\d)'
+    - match: '$\n'
       pop: true
 
     # DATA: show join lines character _ and continue next line with _ (stops if :)
@@ -120,12 +90,8 @@ contexts:
   data_line:
     - meta_scope: constant.global.msxbasic
     - match: ','
-      scope: keyword.operator.msxbasic
-    - match: '_(\s+($|(?=##)))'
       scope: variable.parameter.msxbasic
-    - match: '(?<!,)##.*'
-      scope: comment.msxbasic
-    - match: '((?<!_)$\n|:)'
+    - match: '($\n|:)'
       scope: comment.msxbasic
       pop: true
 
