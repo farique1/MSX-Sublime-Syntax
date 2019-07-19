@@ -144,7 +144,7 @@ There is no block comment but all lines selected will be commented.
 There is no Classic comment preference as I couldn't find a way to insert the `REM` or `'` after the line number.  
   
   
-### Acknowledgements  
+## Acknowledgements  
   
 As always, all of this is offered as is, with no guaranties whatsoever. Use at your own discretion.  
 Having said that, enjoy and send feedback.  
