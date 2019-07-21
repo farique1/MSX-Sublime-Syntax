@@ -1,4 +1,8 @@
-# MSX Sublime Tools  
+># ⛔️ This repo is DEPRECATED.
+># Go to https://github.com/farique1/MSX-Sublime-Tools
+># Where it will live on!
+----------------------------
+## MSX Sublime Tools  
 For Sublime Text 3  
   
 **MSX Sublime Tools** was created to improve the experience of the **MSX Basic Dignified** project but also helps the creation of regular **MSX Basic** programs.  
