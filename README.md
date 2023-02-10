@@ -1,7 +1,8 @@
-># ⛔️ This repo is DEPRECATED.
-># Go to https://github.com/farique1/MSX-Sublime-Tools
-># Where it will live on!
+# ⛔️ DEPRECATED
+### These tools were integrated into the [Basic Dignified Suite](https://github.com/farique1/basic-dignified), are out of date and will no longer be supported here.
+### This repo exists for archival purpose only.   
 ----------------------------
+
 ## MSX Sublime Tools  
 For Sublime Text 3  
   
